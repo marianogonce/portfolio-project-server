@@ -3,10 +3,7 @@ package com.porfolioserver.portfolioserver.models;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "autor")
@@ -14,7 +11,7 @@ public class Autor {
 
     @Id
     @Getter @Setter @Column(name = "user_name")
-    private String user_name;
+    private String username;
 
     @Getter @Setter @Column(name = "password")
     private String password;
@@ -37,11 +34,11 @@ public class Autor {
     @Getter @Setter @Column(name = "descripcion_perfil")
     private String descripcion_perfil;
 
-    @Getter @Setter @Column(name = "foto_perfil_url")
-    private String foto_perfil_url;
+    @Getter @Setter @Column(name = "foto_perfil_ext")
+    private String foto_perfil_ext;
 
-    @Getter @Setter @Column(name = "img_portada_url")
-    private String img_portada_url;
+    @Getter @Setter @Column(name = "img_portada_ext")
+    private String img_portada_ext;
 
     @Getter @Setter @Column(name = "frase_Portada")
     private String frase_Portada;

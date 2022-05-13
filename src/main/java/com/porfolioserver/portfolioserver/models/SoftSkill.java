@@ -13,7 +13,7 @@ public class SoftSkill {
 
     @Id
     @Getter  @Setter @Column(name = "softskill_Id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long softskill_Id;
 
     @Getter @Setter @Column(name = "softskill_descripcion")

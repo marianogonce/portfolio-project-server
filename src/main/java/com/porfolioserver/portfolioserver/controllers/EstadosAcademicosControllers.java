@@ -4,6 +4,7 @@ package com.porfolioserver.portfolioserver.controllers;
 import com.porfolioserver.portfolioserver.dao.EstadoAcademicoDao;
 import com.porfolioserver.portfolioserver.models.EstadoAcademico;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +16,7 @@ public class EstadosAcademicosControllers {
     @Autowired
     private EstadoAcademicoDao estadoAcademicoDao;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value="estadosacademicos")
     public List<EstadoAcademico> getEstadosAcedemicos() {
         return estadoAcademicoDao.getEstadoAcademicos();

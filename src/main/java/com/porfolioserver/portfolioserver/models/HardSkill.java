@@ -14,7 +14,7 @@ public class HardSkill {
     @Getter
     @Setter
     @Column(name="hardskill_id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long hardskill_id;
 
     @Getter

@@ -1,6 +1,9 @@
 package com.porfolioserver.portfolioserver.dao;
 
+
 import com.porfolioserver.portfolioserver.models.Autor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,11 +14,14 @@ import java.util.List;
 
 @Repository
 @Transactional
-
 public class AutorDaoImp implements AutorDao {
+
 
     @PersistenceContext
     private EntityManager entityManager;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public List<Autor> getAutor() {
@@ -23,18 +29,21 @@ public class AutorDaoImp implements AutorDao {
      return entityManager.createQuery(query).getResultList();
     }
 
-
     @Override
-    public Autor obtenerAutorporCredenciales(Autor autor) {
-        String query = "FROM Autor WHERE user_name = : user_name AND password = : password";
-        List<Autor> lista = entityManager.createQuery(query)
-                .setParameter("user_name", autor.getUser_name())
-                .setParameter("password", autor.getPassword())
-                .getResultList();
-        if(lista.isEmpty()) return null;
-        else return lista.get(0);
+    public void setEncodedPassword(String password) {
+        Autor autorToModify = entityManager.find(Autor.class, this.getAutor().get(0).getUsername());
+        entityManager.detach(autorToModify);
+        autorToModify.setPassword(passwordEncoder.encode(password));
+        entityManager.merge(autorToModify);
     }
 
+    @Override
+    public void updateAutor(Autor autor) {
+        Autor autorToModify = entityManager.find(Autor.class, autor.getUsername());
+        entityManager.detach(autorToModify);
+        autorToModify = autor;
+        entityManager.merge(autorToModify);
+    }
 
 
 }

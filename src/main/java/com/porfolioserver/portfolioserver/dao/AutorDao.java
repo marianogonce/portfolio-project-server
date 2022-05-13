@@ -7,5 +7,8 @@ import java.util.List;
 public interface AutorDao {
 
     List<Autor> getAutor();
-    Autor obtenerAutorporCredenciales (Autor autor);
+
+    void setEncodedPassword(String password);
+
+    void updateAutor(Autor autor);
 }

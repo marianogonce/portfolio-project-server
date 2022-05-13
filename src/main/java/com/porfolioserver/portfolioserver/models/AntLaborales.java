@@ -3,10 +3,7 @@ package com.porfolioserver.portfolioserver.models;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "antlaborales")
@@ -16,6 +13,7 @@ public class AntLaborales {
     @Getter
     @Setter
     @Column(name = "antlaborales_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long antlaborales_id;
 
     @Getter
@@ -31,7 +29,7 @@ public class AntLaborales {
 
     @Getter
     @Setter
-    @Column(name = "antlaborales_img_url")
+    @Column(name = "antlaborales_img_ext")
     private String antlaborales_img_url;
 
     @Getter
